@@ -727,13 +727,28 @@ function EndingScreen({ ending, story, onRestart, onHome, onSelect }) {
   return (
     <div style={styles.endingContainer}>
       {/* Image Placeholder */}
-      <div style={{ ...styles.imagePlaceholder, marginBottom: 24 }}>
-        <div style={styles.imagePlaceholderInner}>
-          <span style={{ fontSize: 28, marginBottom: 6 }}>🖼️</span>
-          <span style={styles.imagePlaceholderText}>{ending.image}</span>
-          <span style={styles.imagePlaceholderHint}>ใส่รูปภาพตอนจบที่นี่</span>
+      {ending.image.includes('/') || ending.image.includes('.') ? (
+        <img
+          src={ending.image}
+          alt={ending.title}
+          style={{ 
+            width: "100%", 
+            aspectRatio: "16/9", 
+            objectFit: "cover", 
+            borderRadius: 16, 
+            marginBottom: 24,
+            boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
+          }}
+        />
+      ) : (
+        <div style={{ ...styles.imagePlaceholder, marginBottom: 24 }}>
+          <div style={styles.imagePlaceholderInner}>
+            <span style={{ fontSize: 28, marginBottom: 6 }}>🖼️</span>
+            <span style={styles.imagePlaceholderText}>{ending.image}</span>
+            <span style={styles.imagePlaceholderHint}>ใส่รูปภาพตอนจบที่นี่</span>
+          </div>
         </div>
-      </div>
+      )}
 
       <span style={{ ...styles.storyRegionBadge, background: story.regionColor, marginBottom: 12 }}>
         {story.emoji} {story.title}
