@@ -18,6 +18,7 @@ const STORIES = [
     region: "ภาคเหนือ",
     regionColor: "#8B6914",
     emoji: "🏔️",
+    fullStoryUrl: "https://anyflip.com/nvoax/rsqg/basic",
     summary: "ตำนานกลุ่มดาวลูกไก่บนท้องฟ้า เรื่องราวของแม่ไก่ผู้ปกป้องลูกน้อยทั้งเจ็ดจากพญาเหยี่ยวผู้โหดร้าย",
     steps: [
       {
@@ -107,6 +108,7 @@ const STORIES = [
     region: "ภาคอีสาน",
     regionColor: "#B8860B",
     emoji: "🌾",
+    fullStoryUrl: "https://anyflip.com/ecvka/ebbo/",
     summary: "นิทานสอนใจเรื่องความกตัญญู ชายหนุ่มผู้ทำร้ายแม่เพราะความโกรธ ก่อนจะค้นพบความจริงที่สายเกินไป",
     steps: [
       {
@@ -196,6 +198,7 @@ const STORIES = [
     region: "ภาคกลาง",
     regionColor: "#C41E3A",
     emoji: "🏛️",
+    fullStoryUrl: "http://digital.nlt.go.th/dlib/items/show/11952?collection=54#?c=&m=&s=&cv=&xywh=252%2C-327%2C571%2C653",
     summary: "เรื่องราวของหญิงสาวผู้ถูกแม่เลี้ยงกลั่นแกล้ง แต่ด้วยน้ำใจงามจึงได้รับพรจากสิ่งศักดิ์สิทธิ์",
     steps: [
       {
@@ -285,6 +288,7 @@ const STORIES = [
     region: "ภาคใต้",
     regionColor: "#1B5E20",
     emoji: "🌊",
+    fullStoryUrl: "https://anyflip.com/ctjll/mell/basic",
     summary: "ตำนานเกาะสองเกาะในจังหวัดสงขลา เรื่องราวความซื่อสัตย์ของหนูและแมวที่ตามเจ้านายจนวาระสุดท้าย",
     steps: [
       {
@@ -670,7 +674,7 @@ function StoryScreen({ story, step, stepIndex, totalSteps, onChoice, onBack }) {
           </div>
 
           {step.image.includes('/') || step.image.includes('.') ? (
-            <img src={step.image} alt={step.title} style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", borderRadius: 16, marginBottom: 20, boxShadow: "0 4px 12px rgba(0,0,0,0.08)" }} />
+            <img src={step.image} alt={step.title} style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", borderRadius: 16, marginBottom: 20, boxShadow: "0 4px 12px rgba(0,0,0,0.08)" }} />
           ) : (
             <div style={styles.imagePlaceholder}>
               <div style={styles.imagePlaceholderInner}>
@@ -733,7 +737,7 @@ function EndingScreen({ ending, story, onRestart, onHome, onSelect }) {
           alt={ending.title}
           style={{ 
             width: "100%", 
-            aspectRatio: "16/9", 
+            aspectRatio: "4/3", 
             objectFit: "cover", 
             borderRadius: 16, 
             marginBottom: 24,
@@ -761,6 +765,17 @@ function EndingScreen({ ending, story, onRestart, onHome, onSelect }) {
         <p style={styles.moralLabel}>💡 ข้อคิดจากนิทาน</p>
         <p style={styles.moralText}>{ending.moral}</p>
       </div>
+
+      {story.fullStoryUrl && (
+        <a
+          href={story.fullStoryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ ...styles.readMoreLink, background: story.regionColor }}
+        >
+          📖 อ่านเรื่องเต็ม: {story.title}
+        </a>
+      )}
 
       <div style={styles.endingActions}>
         <button onClick={onRestart} style={{ ...styles.secondaryBtn, borderColor: story.regionColor, color: story.regionColor }}>
@@ -996,7 +1011,7 @@ const styles = {
   // Image Placeholder
   imagePlaceholder: {
     width: "100%",
-    aspectRatio: "16/9",
+    aspectRatio: "4/3",
     borderRadius: 16,
     background: "rgba(139,115,85,0.06)",
     border: "2px dashed rgba(139,115,85,0.2)",
@@ -1169,5 +1184,21 @@ const styles = {
     cursor: "pointer",
     padding: "8px",
     fontFamily: "'Noto Sans Thai', sans-serif",
+  },
+  readMoreLink: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    color: "#fff",
+    textDecoration: "none",
+    padding: "14px 28px",
+    borderRadius: 50,
+    fontSize: 15,
+    fontWeight: 600,
+    fontFamily: "'Noto Sans Thai', sans-serif",
+    marginBottom: 24,
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.15)",
+    cursor: "pointer",
   },
 };
