@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import HomeScreen from "./components/HomeScreen/HomeScreen";
 
 // ============================================================
 // DATA: นิทานไทย 4 ภาค
@@ -551,32 +552,6 @@ export default function ThaiTaleGame() {
             onSelect={goSelect}
           />
         )}
-      </div>
-    </div>
-  );
-}
-
-// ============================================================
-// HOME SCREEN
-// ============================================================
-function HomeScreen({ onStart }) {
-  return (
-    <div style={styles.screenCenter}>
-      <div style={{ animation: "float 3s ease-in-out infinite", fontSize: 48, marginBottom: 16 }}>📜</div>
-      <h1 style={styles.heroTitle}>นิทานไทย</h1>
-      <p style={styles.heroSubtitle}>สี่ภาค สี่ตำนาน</p>
-      <p style={styles.heroDesc}>
-        เลือกเส้นทาง เปลี่ยนชะตา
-        <br />
-        นิทานพื้นบ้านที่คุณเป็นคนกำหนดตอนจบ
-      </p>
-      <button onClick={onStart} style={styles.primaryBtn}>
-        เริ่มเล่น
-      </button>
-      <div style={styles.regionRow}>
-        {["🏔️ เหนือ", "🌾 อีสาน", "🏛️ กลาง", "🌊 ใต้"].map((r, i) => (
-          <span key={i} style={styles.regionTag}>{r}</span>
-        ))}
       </div>
     </div>
   );

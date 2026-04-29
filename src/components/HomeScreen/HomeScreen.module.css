@@ -1,0 +1,282 @@
+/* ===== KEYFRAMES ===== */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 0.85; transform: scale(1.2); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmerSlide {
+  0% { left: -60%; }
+  100% { left: 140%; }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { box-shadow: 0 4px 15px rgba(45, 36, 25, 0.2); }
+  50% { box-shadow: 0 8px 24px rgba(45, 36, 25, 0.38); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  padding: 60px 0 48px;
+}
+
+/* ===== BACKGROUND PATTERN ===== */
+.bgPattern {
+  position: absolute;
+  inset: 0;
+  /* Simple Thai-style scroll/knot tiling pattern */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M10 40 C10 20 30 10 40 20 C50 30 40 50 30 45 C20 40 25 30 35 35' fill='none' stroke='%238B7355' stroke-width='1'/%3E%3Cpath d='M70 40 C70 60 50 70 40 60 C30 50 40 30 50 35 C60 40 55 50 45 45' fill='none' stroke='%238B7355' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='1.5' fill='%238B7355'/%3E%3Ccircle cx='10' cy='10' r='1' fill='%238B7355'/%3E%3Ccircle cx='70' cy='10' r='1' fill='%238B7355'/%3E%3Ccircle cx='10' cy='70' r='1' fill='%238B7355'/%3E%3Ccircle cx='70' cy='70' r='1' fill='%238B7355'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== STARS ===== */
+.starsLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  animation: fadeIn 0.6s ease 0.2s both;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #C9A96E;
+  animation: twinkle 2.5s ease-in-out infinite;
+}
+
+/* ===== CORNER SILHOUETTES ===== */
+.silhouette {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  color: #8B7355;
+  animation: fadeIn 0.7s ease 0s both;
+}
+
+.silSvg {
+  display: block;
+  opacity: 0.13;
+  animation: float 4s ease-in-out infinite;
+}
+
+.silNorth {
+  top: 24px;
+  left: -12px;
+  width: 120px;
+}
+
+.silIsan {
+  top: 24px;
+  right: -12px;
+  width: 110px;
+}
+
+.silCentral {
+  bottom: 90px;
+  left: -12px;
+  width: 110px;
+}
+
+.silSouth {
+  bottom: 70px;
+  right: -12px;
+  width: 120px;
+}
+
+/* ===== MAIN CONTENT ===== */
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 28px;
+  max-width: 400px;
+}
+
+/* ===== DECORATIVE WAVY LINE (above title) ===== */
+.decoTop {
+  width: 180px;
+  margin-bottom: 16px;
+  color: #8B7355;
+  animation: fadeSlideUp 0.6s ease 0.3s both;
+}
+
+.decoSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== TITLE ===== */
+.title {
+  font-family: 'Noto Serif Thai', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #2D2419;
+  margin-bottom: 6px;
+  letter-spacing: 4px;
+  line-height: 1.2;
+  animation: fadeSlideUp 0.6s ease 0.4s both;
+}
+
+/* ===== SUBTITLE ===== */
+.subtitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: #8B7355;
+  margin-bottom: 12px;
+  letter-spacing: 5px;
+  animation: fadeSlideUp 0.6s ease 0.6s both;
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  width: 40px;
+  height: 2px;
+  background: #8B7355;
+  border-radius: 1px;
+  margin-bottom: 20px;
+  animation: fadeSlideUp 0.6s ease 0.6s both;
+}
+
+/* ===== DESCRIPTION ===== */
+.desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #6B5B4A;
+  margin-bottom: 32px;
+  max-width: 280px;
+  animation: fadeSlideUp 0.6s ease 0.8s both;
+}
+
+/* ===== START BUTTON ===== */
+.startBtn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #2D2419;
+  color: #FAF6F0;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 52px;
+  font-size: 17px;
+  font-weight: 600;
+  font-family: 'Noto Sans Thai', sans-serif;
+  cursor: pointer;
+  margin-bottom: 36px;
+  letter-spacing: 1px;
+  /* entrance fade-in, then shadow pulse */
+  animation: fadeIn 0.6s ease 1.0s both, gentlePulse 4s ease-in-out 1.7s infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* shimmer as sliding pseudo-element — doesn't interfere with transform */
+.startBtn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+  animation: shimmerSlide 3s linear 1.8s infinite;
+  pointer-events: none;
+  border-radius: 50px;
+}
+
+.startBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 28px rgba(45, 36, 25, 0.35);
+}
+
+.startBtn:active {
+  transform: scale(0.98);
+}
+
+.startIcon {
+  font-size: 13px;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* ===== REGION CARDS ===== */
+.regionCards {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 36px;
+  animation: fadeSlideUp 0.6s ease 1.2s both;
+}
+
+.regionCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 70px;
+  padding: 10px 6px 8px;
+  background: rgba(250, 246, 240, 0.88);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.regionCard:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.regionEmoji {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.regionName {
+  font-size: 12px;
+  font-weight: 600;
+  color: #2D2419;
+}
+
+.regionBar {
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+}
+
+/* ===== FOOTER TEXT ===== */
+.footer {
+  font-size: 11px;
+  color: #A89880;
+  letter-spacing: 1.5px;
+  animation: fadeSlideUp 0.6s ease 1.4s both;
+}
